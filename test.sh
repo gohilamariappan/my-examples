@@ -1,2 +1,0 @@
-echo "Welcome to git"
-
