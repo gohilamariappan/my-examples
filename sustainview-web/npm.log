@@ -1,9 +1,0 @@
-
-> node-sass@4.9.3 install /home/gohila/Desktop/angular/sustainview-web/node_modules/node-sass
-> node scripts/install.js
-
-
-> node-sass@4.9.3 postinstall /home/gohila/Desktop/angular/sustainview-web/node_modules/node-sass
-> node scripts/build.js
-
-Building: /usr/bin/node /home/gohila/Desktop/angular/sustainview-web/node_modules/node-gyp/bin/node-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsass_library=
