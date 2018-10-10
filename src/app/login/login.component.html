@@ -1,0 +1,14 @@
+<div class="login-page">
+        <div class="form"><p><b><h4>LOGIN</h4></b></p><br>
+          <form class="login-form" #f="ngForm" (ngSubmit)="f.form.valid && login()">
+            <div>
+                <input type="text" placeholder="E-mail" name="mailid" id="mailid" [(ngModel)]="username" required/>
+                <div><span class="error" *ngIf="f.submitted && !username">Username is required</span></div>
+                 <input type="password" placeholder="Password"name="pwd" id="pwd" [(ngModel)]="password" required/>
+                <div><span class="error" *ngIf="f.submitted && !password">Password is required</span></div>
+            </div>
+            <button>login</button><br><br>
+            <p><a href="">Forgotten Password?</a></p>
+          </form>
+        </div>
+      </div>

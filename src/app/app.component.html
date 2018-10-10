@@ -1,0 +1,212 @@
+<div class="main" *ngIf="topNav">
+  <div class="main1">
+    <nav class="navbar navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a (click)="hom()">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Goals
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2016
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="">Mid-year</a>
+                </li>
+                <li>
+                  <a href="">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2017
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2018
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2019
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2020
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Feedback
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2016
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2017
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2018
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2019
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">2020
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Mid-year</a>
+                </li>
+                <li>
+                  <a href="#">Annual-year</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employees
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a (click)="view1()">View</a>
+            </li>
+            <li>
+              <a (click)="empmthd()">Add</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Release goals
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a (click)="relmthd()">2018</a>
+            </li>
+            <li>
+              <a (click)="relmthd()">2019</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a (click)="repmthd()">Report</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appraisal
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a (click)="appmthd()">2018</a>
+            </li>
+            <li>
+              <a (click)="appmthd()">2019</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a (click)="hismthd()">History</a>
+
+        </li>
+      </ul>
+
+
+      <ul class="nav navbar-nav pos">
+        <li>
+          <a (click)="logout()">
+            <span class="glyphicon glyphicon-user"></span> Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
