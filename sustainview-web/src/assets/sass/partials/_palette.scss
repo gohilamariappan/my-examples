@@ -1,0 +1,15 @@
+$default-white: #fff;
+$default-light-grey:#c9cacc;
+$default-light-green:#008469;
+$default-dark-green:#056839; 
+.default {
+    .default-white {
+        color: $default-white;
+    }
+    .default-light-grey{
+        color:$default-light-grey;
+    }
+    .default-light-green{
+        color:$default-light-green;
+    }
+}

@@ -1,0 +1,216 @@
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor">Company</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && updateCompany()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="cType" id="cType" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="company.companyType"
+                readonly  autocomplete="off">
+              <label for="cType" class="formLabel">Company Type</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="companyName" id="companyName" class="floating-input" [(ngModel)]="company.companyName" placeholder=" "
+                tabindex="1" readonly  autocomplete="off">
+              <label for="companyName" class="formLabel">Company Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input ngui-auto-complete [source]="currency" placeholder=" " class="floating-input" name="currCode" id="currCode" [(ngModel)]="currencyObj"
+                tabindex="1" value-formatter="name" list-formatter="name" [match-formatted]="true" required autocomplete="off">
+              <label for="currCode" class="formLabel">Currency</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !currencyObj">Currency Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="users" id="users" class="floating-input" readonly placeholder=" " tabindex="1" autocomplete="off">
+              <label for="users" class="formLabel">Number of Users</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="Website" id="Website" class="floating-input" [(ngModel)]="company.companyDomain" placeholder=" "
+                tabindex="1" required autocomplete="off">
+              <label for="Website" class="formLabel">Website</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !company.companyDomain">Website Required</span>
+            </div>
+          </div>
+        </div>
+        <label for="formGroupInput" class="formGroupInput">Contact</label>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="pName" id="pName" class="floating-input" placeholder=" " [(ngModel)]="companyContact.contactPersonName"
+                tabindex="1" required autocomplete="off">
+              <label for="pName" class="formLabel">Person</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyContact.contactPersonName">Person Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="email" id="email" class="floating-input" [(ngModel)]="companyContact.contactEmail" placeholder=" "
+                tabindex="1" required autocomplete="off">
+              <label for="email" class="formLabel">Email</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyContact.contactEmail">Email Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="phone" id="phone" class="floating-input" [(ngModel)]="companyContact.contactTelephone" placeholder=" "
+                tabindex="1" required autocomplete="off">
+              <label for="phone" class="formLabel">Phone</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyContact.contactTelephone">Phone Number Required</span>
+            </div>
+          </div>
+        </div>
+        <label for="formGroupInput" class="formGroupInput">Address</label>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="address1" id="address1" class="floating-input" [(ngModel)]="companyAddress.address1" placeholder=" "
+                tabindex="1" required autocomplete="off">
+              <label for="address1" class="formLabel">Address Line 1</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyAddress.address1">Address Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="address2" id="address2" class="floating-input" [(ngModel)]="companyAddress.address2" placeholder=" "
+                tabindex="1"  autocomplete="off">
+              <label for="address2" class="formLabel">Address Line 2</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="pCode" id="pCode" class="floating-input" placeholder=" " [(ngModel)]="companyAddress.postcode" tabindex="1"
+                required autocomplete="off">
+              <label for="pCode" class="formLabel">Post Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyAddress.postcode">Post Code Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="city" id="city" class="floating-input" [(ngModel)]="companyAddress.cityName" placeholder=" " tabindex="1"
+                required autocomplete="off">
+              <label for="city" class="formLabel">City</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !companyAddress.cityName">City Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="state" id="state" class="floating-input" [(ngModel)]="companyAddress.stateRegion" placeholder=" "
+                tabindex="1" autocomplete="off">
+              <label for="state" class="formLabel">State</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input ngui-auto-complete [source]="country" placeholder=" " class="floating-input" name="cCode" id="cCode" [(ngModel)]="countryObj"
+                tabindex="1" value-formatter="countryCodeISO2 - countryName" list-formatter="countryCodeISO2 - countryName"
+                [match-formatted]="true" required autocomplete="off" #countryCode>
+              <label for="cCode" class="formLabel">Country Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !countryObj">Country Code Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="fax" id="fax" class="floating-input" [(ngModel)]="companyAddress.faxNumber" placeholder=" " tabindex="1"
+                autocomplete="off">
+              <label for="fax" class="formLabel">Fax</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="date" id="date" class="floating-input" placeholder=" " tabindex="1" autocomplete="off">
+              <label for="date" class="formLabel">Registered Date</label>
+            </div>
+            <!-- <div>
+              <span class="error" *ngIf="f.submitted && !cocObj.codeSection">Section Number Required</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-light btn-add btn-lg width100">Update Company</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 company-buttons">
+      <div class="form-group">
+        <button (click)="routeTo('engagementRules')" class="btn btn-light btn-add btn-lg custom-width">Add Engagement Rule</button>
+      </div>
+      <div class="form-group">
+        <button (click)="routeTo('address')" class="btn btn-light btn-add btn-lg custom-width">Additional Address</button>
+      </div>
+      <div class="form-group">
+        <button (click)="routeTo('contact')" class="btn btn-light btn-add btn-lg custom-width">Additional Contacts</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<p-toast life="3000"></p-toast>
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="routetoUrl('coc')">Coc</a>
+            <a>></a>
+            <a>Add Coc</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && addCoc()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="secNo" id="secNo" class="floating-input" placeholder=" " [(ngModel)]="cocObj.codeSection" tabindex="1"
+                required autocomplete="off">
+              <label for="secNo" class="formLabel">Section Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !cocObj.codeSection">Section Number Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="Title" id="Title" class="floating-input" placeholder=" " [(ngModel)]="cocObj.codeTitle" tabindex="1"
+                required autocomplete="off">
+              <label for="Title" class="formLabel">Section Title</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !cocObj.codeTitle">Section Title Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="codeSubSection" id="codeSubSection" class="floating-input" placeholder=" " [(ngModel)]="cocObj.codeSubSection"
+                tabindex="1" required autocomplete="off">
+              <label for="codeSubSection" class="formLabel">Code Sub Section Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !cocObj.codeSubSection">code Sub Section Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <textarea class="floating-input" placeholder=" " id="codeText" name="codeText" [(ngModel)]="cocObj.codeText" rows="1" tabindex="1"
+                autocomplete="off"></textarea>
+              <label for="codeText" class="formLabel">Description</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' ngui-auto-complete name="certiBody" id="certiBody" class="floating-input" placeholder=" " [(ngModel)]="cocObj.certificationBody"
+                [source]="certificateBody" value-formatter="type" list-formatter="type" [match-formatted]="true" tabindex="1"
+                required autocomplete="off">
+              <label for="certiBody" class="formLabel">Certification Body</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="Certification" type="text" class="floating-input" placeholder=" " id="Certification" tabindex="3" [(ngModel)]="cocBindObj"
+                ngui-auto-complete [source]="cocList" value-formatter="codeSection - codeText" list-formatter="codeSection - codeText"
+                [match-formatted]="true" required autocomplete="off" (ngModelChange)="getSection($event)">
+              <label for="Certification" class="formLabel">Cross Reference COC Certification Body Section</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' ngui-auto-complete name="Reference" id="Reference" class="floating-input" placeholder=" " [(ngModel)]="cocReferenceObj"
+                [source]="cocSubSec" value-formatter="id - name" list-formatter="id - name" [match-formatted]="true" tabindex="1"
+                required autocomplete="off">
+              <label for="Reference" class="formLabel">Cross Reference COC Certification Body Sub sSection</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="responseType" type="text" class="floating-input" placeholder=" " id="responseType" tabindex="3" [(ngModel)]="cocObj.responseType"
+                ngui-auto-complete [source]="responseArray" value-formatter="type" list-formatter="type" [match-formatted]="true"
+                required autocomplete="off">
+              <label for="responseType" class="formLabel">Response Type</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="year" type="text" class="floating-input" placeholder=" " id="year" tabindex="3" [(ngModel)]="cocObj.year" ngui-auto-complete
+                [source]="year" value-formatter="type" list-formatter="type" [match-formatted]="true" required autocomplete="off">
+              <label for="year" class="formLabel">Year</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-light btn-add btn-lg width100">Add Coc</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

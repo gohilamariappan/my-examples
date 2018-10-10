@@ -1,0 +1,286 @@
+/*Margin top helpers*/
+.MT10 {
+    @include topMargin(10px);
+}
+.MT15{
+    @include topMargin(15px);
+}
+.MT20{
+    @include topMargin(20px);
+}
+.MT30{
+    @include topMargin(30px);
+}
+.MT45{
+    @include topMargin(45px);
+}
+.MT50{
+    @include topMargin(50px);
+}
+/*Margin bottom helpers*/
+.MB30{
+    @include bottomMargin(30px);
+}
+/*Margin Left helpers*/
+.ML10{
+    @include leftMargin(10px);
+}
+/*General padding*/
+
+.P0 {
+    @include generalPadding(0);
+}
+.P5{
+    @include generalPadding(5px);
+}
+.custom-container{
+    // padding-left: 25px;
+    // padding-right: 25px;
+    
+    padding-left: 58px;
+    padding-right: 36px;
+}
+//float helpers
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+//customized table css
+.table-tr-class{
+    // overflow: hidden;
+    // height: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+.table-tr-class:hover{
+    background: $default-light-grey;
+}
+.ui-table .ui-table-thead>tr>th,.ui-table .ui-table-tfoot>tr>td{
+    padding: .50em;
+    // min-height: 56px;
+    text-align: center;
+}
+.ui-table .ui-table-tbody > tr > td{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ui-table-caption, .ui-table-summary {
+    padding: 20px;
+}
+.global-filter-div{
+    overflow: hidden;
+    text-align: right
+}
+.global-filter-input{
+    width: auto;
+    overflow: hidden;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 4px;
+}
+.fa-eye-color{
+    color:#3b5998;
+}
+.fa-trash-color{
+    color:#ac2925;
+}
+.ui-paginator .ui-paginator-page.ui-state-active{
+    // background: #3b5998;
+    background:$default-dark-green;
+    }
+//Button
+.btn-add{
+    // background:$default-dark-blue;
+    background:$default-dark-green;
+    color: $default-white;
+}
+.ui-widget-header .ui-button:enabled:hover, .ui-widget-header .ui-button:focus, .ui-widget-content .ui-button:enabled:hover, .ui-widget-content .ui-button:focus, .ui-widget.ui-button:enabled:hover, .ui-widget.ui-button:focus, .ui-button:enabled:hover, .ui-button:focus{
+    color: #212529;
+    background-color: #dae0e5;
+    border-color: #d3d9df;
+}
+.btn-delete{
+    // background:$default-light-blue;
+    // background:$default-dark-blue;
+    // color:$default-dark-blue;
+    background: #f7f7f7;
+    color:#000;
+}
+//top-subNav-header
+header {
+    nav.navbar-default.subHeader {
+        z-index: 3;
+        padding: 0;
+        background: #f7f7f7;
+        ul.nav.navbar-nav.navbar-left {
+          li{
+            a{
+              span.number {
+                font-size: 36px;
+                // font-family: $Oswald-Regular;
+                font-family: $Helvetica;
+                line-height: 35px;
+                // color: $blue-default;
+              }
+              span.text {
+                font-size: 22px;
+                font-family: $Helvetica;
+                // font-family: $Oswald-Regular;
+                // color: $blue-default;
+              }
+            }
+          }
+          li.breadCrumbs {
+            a {
+            //   color: $blue-default;
+            //   font-family: $Oswald-Regular;
+            font-family: $Helvetica;
+              font-size: 16px;
+              font-weight: 100;
+              display: inline-block;
+              padding: 0px 5px;
+            //   text-transform: uppercase;
+              line-height: 50px;
+              cursor: pointer;
+            }
+          }
+       }
+        ul.nav.navbar-nav.navbar-right {
+          li {
+            label {
+              i{
+                font-size: 24px;
+                margin-right: 15px;
+                // color: $blue-default;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+      .navbar-nav li.nav-item.dropdown{
+        position: relative;
+        padding: 0px 10px!important;
+    }
+  }
+  // inline-block
+  .inline-block{
+    display: inline-block;
+}
+.width100{
+    width: 100%;
+}
+.form-class{
+    padding: 45px;
+    border: 1px solid #f7f7f7;
+    }
+.ui-toast-message-warn{
+    background:#ffe399!important;
+}
+.ui-toast-message-success{
+    background:#b7d8b7!important;
+    }
+.ui-toast-message-error{
+    background: #f8b7bd!important;
+  }
+.ui-toast-close-icon{
+    color:#212121;
+}
+.ui-toast-close-icon:focus,.ui-toast-close-icon:active,.ui-toast-close-icon:hover{
+    color:#212121;
+}
+.bg-red{
+    background: #D52C52!important;
+}
+.bg-amber{
+    background:#FFCA4F!important;
+}
+.bg-green{
+    background:#9BDEAC!important;
+}
+.error {
+	font-family: $Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    color: red;
+}
+.calendar-input{
+    .ui-state-default {
+    border: transparent!important;
+    background:transparent!important;
+    }
+}
+.calendar-input{
+    .ui-inputtext {
+    margin-top: -6px!important;
+    border: transparent!important;
+    }
+}
+ /* Column Priorities */
+ @media only all {
+    th.ui-p-6,
+    td.ui-p-6,
+    th.ui-p-5,
+    td.ui-p-5,
+    th.ui-p-4,
+    td.ui-p-4,
+    th.ui-p-3,
+    td.ui-p-3,
+    th.ui-p-2,
+    td.ui-p-2,
+    th.ui-p-1,
+    td.ui-p-1 {
+        display: none;
+    }
+}
+
+/* Show priority 1 at 320px (20em x 16px) */
+@media screen and (min-width: 20em) {
+    th.ui-p-1,
+    td.ui-p-1 {
+        display: table-cell;
+    }
+}
+
+/* Show priority 2 at 480px (30em x 16px) */
+@media screen and (min-width: 30em) {
+    th.ui-p-2,
+    td.ui-p-2 {
+        display: table-cell;
+    }
+}
+
+/* Show priority 3 at 640px (40em x 16px) */
+@media screen and (min-width: 40em) {
+    th.ui-p-3,
+    td.ui-p-3 {
+        display: table-cell;
+    }
+}
+
+/* Show priority 4 at 800px (50em x 16px) */
+@media screen and (min-width: 50em) {
+    th.ui-p-4,
+    td.ui-p-4 {
+        display: table-cell;
+    }
+}
+
+/* Show priority 5 at 960px (60em x 16px) */
+@media screen and (min-width: 60em) {
+    th.ui-p-5,
+    td.ui-p-5 {
+        display: table-cell;
+    }
+}
+
+/* Show priority 6 at 1,120px (70em x 16px) */
+@media screen and (min-width: 70em) {
+    th.ui-p-6,
+    td.ui-p-6 {
+        display: table-cell;
+    }
+}

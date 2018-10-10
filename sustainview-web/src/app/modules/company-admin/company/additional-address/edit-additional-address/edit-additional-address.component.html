@@ -1,0 +1,150 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="addressList()">Additional Addresses</a>
+            <a>></a>
+            <a>Edit Address</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && updateAddressById()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="CompanyName" id="CompanyName" class="floating-input" placeholder=" " [(ngModel)]="addressObj.companyName"
+                tabindex="1" readonly autocomplete="off" >
+              <label for="CompanyName" class="formLabel">Company Name </label>
+            </div>
+            <!-- <div>
+              <span class="error" *ngIf="f.submitted && !companyObj">Company Name Required</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="addressOne" id="addressOne" class="floating-input" placeholder=" " [(ngModel)]="addressObj.addressOne"
+                tabindex="1" required autocomplete="off">
+              <label for="addressOne" class="formLabel">Address Line 1</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.addressOne">Address Line 1 Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="addressTwo" id="addressTwo" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.addressTwo"
+                autocomplete="off">
+              <label for="addressTwo" class="formLabel">Address Line 2</label>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="code" id="code" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.postCode"
+                required autocomplete="off">
+              <label for="code" class="formLabel">Post Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.postCode"> PostCode Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="city" id="city" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.city"
+                required autocomplete="off">
+              <label for="city" class="formLabel">City</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.city">City Required </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="State" id="State" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.state"
+                required autocomplete="off">
+              <label for="State" class="formLabel">State</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.state">State Required </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="country" type="text" class="floating-input" placeholder=" " id="country" tabindex="1" [(ngModel)]="countryObj"
+                ngui-auto-complete [source]="country" value-formatter="countryCodeISO2 - countryName" list-formatter="countryCodeISO2 - countryName"
+                [match-formatted]="true" required autocomplete="off" #countryC>
+              <label class="deleteIcon" for="country" class="formLabel">Country</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !countryObj">Country Required </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="phoneNumber" id="phoneNumber" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.phoneNumber"
+                required autocomplete="off">
+              <label for="phoneNumber" class="formLabel">Phone Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.phoneNumber">Phone Number Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="faxNumber" id="faxNumber" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="addressObj.faxNumber"
+                required autocomplete="off">
+              <label for="faxNumber" class="formLabel">Fax Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !addressObj.faxNumber">Fax Number Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 inline-block">
+              <button type="submit" class="btn btn-add btn-lg width100">Update Address</button>
+            </div>
+            <div class="col-md-6 col-sm-6 inline-block">
+              <span class="btn btn-delete btn-lg width100" (click)="deleteAddressById()" tabindex="5">Delete</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

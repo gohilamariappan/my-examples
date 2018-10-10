@@ -1,0 +1,20 @@
+@import "../../../../../assets/sass/mixins/_margin-padding.scss";
+@import "../../../../../assets/sass/partials/_fonts.scss";
+@import "../../../../../assets/sass/partials/_palette.scss";
+@import "../../../../../assets/sass/partials/_helper.scss";
+.formGroupInput{
+    font-size: 18px;
+    color:$default-light-green;
+    margin-bottom: 1.5em;
+    display: block;
+    text-align: center;
+}
+.company-buttons{
+    position: fixed;
+    right: 0;
+    margin-top: 100px;
+    padding: 0 30px;
+}
+.custom-width{
+    min-width: 231px;
+}

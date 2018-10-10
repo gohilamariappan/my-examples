@@ -1,0 +1,8 @@
+@import "../../../../../assets/sass/mixins/_margin-padding.scss";
+@import "../../../../../assets/sass/partials/_fonts.scss";
+@import "../../../../../assets/sass/partials/_palette.scss";
+
+.calendar-input{
+    padding: 3px 15px!important;
+    border-bottom: #000!important;
+}

@@ -1,0 +1,269 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="listOfCapar()">List Of Capar</a>
+            <a>></a>
+            <a>View Capar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+       <h2 class="MB30 inline-div">Update Capar</h2>
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && updateCapar()">
+         <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="auditSectionCode" type="text" class="floating-input" placeholder=" " id="auditSectionCode" tabindex="1" [(ngModel)]="caparDetails.auditSectionCode"
+                ngui-auto-complete [source]="auditSectionCode" value-formatter="id" list-formatter="name" [match-formatted]="true"
+                required autocomplete="off" onselect="getSubSectionCodeDropDown(caparDetails.auditSectionCode)">
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Audit Section Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.auditSectionCode">Audit Section Code Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="auditSectionSubCode" type="text" class="floating-input" placeholder=" " id="auditSectionSubCode" tabindex="1" [(ngModel)]="caparDetails.auditSectionSubCode"
+                ngui-auto-complete [source]="auditSectionSubCode" value-formatter="id" list-formatter="name" [match-formatted]="true"
+                required autocomplete="off">
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Audit Section Sub Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.auditSectionSubCode">Audit Section Sub Code Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <p-calendar [showIcon]="true" dateFormat="yy-mm-dd" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="caparDetails.dateAudited"
+              yearRange="2000:2030" name="calendar" placeholder=" " class="calendar-input floating-input"></p-calendar>
+            <label for="linkTitle" class="formLabel">Audit Date</label>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.dateAudited">Audit Date Required</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="auditedBy" type="text" class="floating-input" placeholder=" " id="auditedBy" tabindex="1" [(ngModel)]="caparDetails.auditedBy"
+                ngui-auto-complete [source]="auditorsList" value-formatter="id" list-formatter="name" [match-formatted]="true"
+                required autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Audit Performed By</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.auditedBy">Audit Performed Name Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="auditedType" type="text" class="floating-input" placeholder=" " id="auditedType" tabindex="1" [(ngModel)]="caparDetails.auditedType"
+                ngui-auto-complete [source]="auditTypes" value-formatter="auditTypes" list-formatter="auditTypes" [match-formatted]="true"
+                required autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Audit Type</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.auditedType">Audit Type Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="currentStatusFiniding" type="text" class="floating-input" placeholder=" " id="currentStatusFiniding" tabindex="1" [(ngModel)]="caparDetails.currentStatusFiniding"
+                ngui-auto-complete [source]="caparStatus" value-formatter="caparStatus" list-formatter="caparStatus" [match-formatted]="true"
+                required autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Current Status of Issue </label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.currentStatusFiniding">Status Is Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <p-calendar [showIcon]="true" dateFormat="yy-mm-dd" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="caparDetails.currentStatusDate"
+              yearRange="2000:2030" name="calendar" placeholder=" " class="calendar-input floating-input"></p-calendar>
+            <label for="linkTitle" class="formLabel">Date Last Checked</label>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.currentStatusDate">Date Last Checked</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="currentStatusRemarks" id="currentStatusRemarks" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.currentStatusRemarks"
+              autocomplete="off">
+              <label for="linkTitle" class="formLabel">Current Remarks</label>
+            </div>
+             </div>
+         </div>
+
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="findingType" type="text" class="floating-input" placeholder=" " id="findingType" tabindex="1" [(ngModel)]="caparDetails.findingType"
+                ngui-auto-complete [source]="finidingTypes" value-formatter="finidingTypes" list-formatter="finidingTypes" [match-formatted]="true"
+                required autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Type of Issue</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.findingType">Type of Issue Is Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="findings" type="text" class="floating-input" placeholder=" " id="findings" tabindex="1" [(ngModel)]="caparDetails.findings"
+                ngui-auto-complete [source]="finidingTypes" value-formatter="finidingTypes" list-formatter="finidingTypes" [match-formatted]="true"
+                required autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Issue</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.findings">Issue Is Required</span>
+           </div> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="agreedCap" type="text" class="floating-input" placeholder=" " id="agreedCap" tabindex="1" [(ngModel)]="caparDetails.agreedCap"
+                ngui-auto-complete [source]="finidingTypes" value-formatter="finidingTypes" list-formatter="finidingTypes" [match-formatted]="true"
+                 autocomplete="off" >
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Agreed Corrective Action Plan</label>
+            </div> 
+          </div>
+        </div>
+
+      <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="pesnResponsibleForCapClosure" id="pesnResponsibleForCapClosure" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.pesnResponsibleForCapClosure"
+              autocomplete="off" >
+              <label for="linkTitle" class="formLabel">Name of Supervisor to Oversee the CAP</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.pesnResponsibleForCapClosure">Name of Supervisor to Oversee the CAP Is Required</span>
+           </div>
+             </div>
+        </div> 
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="intermediateName" id="intermediateName" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.intermediateName"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Intermediary</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.pesnResponsibleForCapClosure">Intermediary Is Required</span>
+           </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="intermediateName" id="intermediateName" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.factoryName"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Factory Name</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparDetails.factoryName">Factory Name Is Required</span>
+           </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="ragStatus" id="ragStatus" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.ragStatus"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">RAG Status</label>
+            </div>
+             </div>
+        </div>
+
+     <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="factoryCountry" id="factoryCountry" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.factoryCountry"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Country</label>
+            </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="payToVendorName" id="payToVendorName" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.payToVendorName"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Vendor</label>
+            </div>
+             </div>
+        </div>
+   
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="estimatedCompletionDays" id="estimatedCompletionDays" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.estimatedCompletionDays"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Expected Days to implement CAP</label>
+            </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="targetResolutionDate" id="targetResolutionDate" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="caparDetails.targetResolutionDate"
+              autocomplete="off" readonly>
+              <label for="linkTitle" class="formLabel">Target Resolution Date</label>
+            </div>
+             </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 inline-block">
+              <button class="btn btn-add btn-lg width100">Update</button>
+            </div>
+          </div>
+        </div>
+      
+      </form>
+    </div>
+  </div>
+</div>

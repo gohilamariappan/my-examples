@@ -1,0 +1,17 @@
+@import "../../../../../assets/sass/mixins/_margin-padding.scss";
+@import "../../../../../assets/sass/partials/_fonts.scss";
+@import "../../../../../assets/sass/partials/_palette.scss";
+@import "../../../../../assets/sass/partials/_helper.scss";
+
+.actionIcon{
+    // font-size: 37px;
+    color:$default-dark-green;
+}
+
+.tableWidth{
+    width: 100%;
+}
+.PL15{
+    padding-left: 15px;
+}
+

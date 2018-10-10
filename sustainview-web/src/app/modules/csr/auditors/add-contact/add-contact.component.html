@@ -1,0 +1,117 @@
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('root')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="routeUrl()">List Of Contacts</a>
+            <a>></a>
+            <a>Add Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <!-- <h2 class="MB30 inline-div">Add COC</h2> -->
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && addContact()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="CompanyName" id="CompanyName" class="floating-input" placeholder=" " [(ngModel)]="contact.companyName"
+                tabindex="1" required readonly autocomplete="off">
+              <label for="linkTitle" class="formLabel">Compnay Name</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.companyName">Company Name Required</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="CompanyDomain" id="CompanyDomain" class="floating-input" placeholder=" " [(ngModel)]="contact.roleName"
+                tabindex="1" required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Role Name</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.roleName">Role Is Required</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="responseType" type="text" class="floating-input" placeholder=" " id="responseType" tabindex="1" [(ngModel)]="contact.baseLocation"
+                ngui-auto-complete [source]="baseLocations" value-formatter="baseLocations" list-formatter="baseLocations" [match-formatted]="true"
+                required autocomplete="off">
+              <label class="deleteIcon" for="linkTitle" class="formLabel">Base Location</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.baseLocation">Pleae Select Base Location</span>
+            </div>
+          </div>
+        </div>
+
+       <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="ContactPersonName" id="ContactPersonName" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="contact.personName"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Name</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.personName">Contact Person Name Required</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="ContactEmail" id="ContactEmail" class="floating-input" placeholder=" " tabindex="1" #email='ngModel'
+                [(ngModel)]="contact.email" required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Email</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.email">Email Required</span>
+            </div>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="TelePhoneNumber" id="TelePhoneNumber" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="contact.telePhone"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Phone Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !contact.telePhone">Phone Number Required</span>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 inline-block">
+              <button class="btn btn-add btn-lg width100">ADD CONTACT</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

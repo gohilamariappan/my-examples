@@ -1,0 +1,83 @@
+@import "../../../assets/sass/mixins/_margin-padding.scss";
+@import "../../../assets/sass/partials/_fonts.scss";
+@import "../../../assets/sass/partials/_palette.scss";
+@import "../../../assets/sass/partials/_helper.scss";
+.login-container{
+     min-height: 100vh;
+     padding-top: 194px;
+     overflow: hidden;
+     background-image: url(/assets/images/background.jpg);
+    //  background: linear-gradient(90deg, rgba(247,247,247,1) 0%, rgba(59,89,152,1) 0%, rgba(139,157,195,1) 55%);
+    //  background: linear-gradient(90deg, rgba(59,89,152,1) 0%, rgba(139,157,195,1) 53%, rgba(247,247,247,1) 100%);
+    }
+    .login-page {
+        padding: 0;
+        margin: auto;
+    }
+      .form-class {
+        position: relative;
+        z-index: 1;
+        background:#fff;
+        // background: linear-gradient(90deg, rgba(59,89,152,1) 0%, rgba(139,157,195,1) 53%, rgba(247,247,247,1) 100%);
+        max-width: 626px;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 0 20px 18px rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 10px;
+      }
+      .form-class input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+      .form-class button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #056839;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .form-class button:hover,.form-class button:active,.form-class button:focus {
+        background: #086a3c;
+      }
+      .form-class .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+      }
+      .form-class .message a {
+        color:  #056839;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .img-Logo{
+      padding-bottom: 22px;
+      }
+    .top-row-class{
+        height: 248px;
+        background: #fff;
+        opacity: 0.9;
+    }
+    .bottom-row-class{
+      background: #056839;
+    }      
+    .logo-height{
+      height: 95px!important;
+    }

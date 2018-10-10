@@ -1,0 +1,138 @@
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="addressList()">Additional Addresses</a>
+            <a>></a>
+            <a>Add Address</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && addAddress()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="CompanyName" id="CompanyName" class="floating-input" placeholder=" " [(ngModel)]="companyName.companyName"
+                tabindex="1" readonly autocomplete="off">
+              <label for="CompanyName" class="formLabel">Company Name</label>
+            </div>
+            <!-- <div>
+              <span class="error" *ngIf="f.submitted && !companyObj">Company Name Required</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="CompanyDomain" id="CompanyDomain" class="floating-input" placeholder=" " [(ngModel)]="address.addressOne"
+                tabindex="1" required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Address Line 1</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.addressOne">Address Line 1 Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="ContactPersonName" id="ContactPersonName" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="address.addressTwo"
+                autocomplete="off">
+              <label for="linkTitle" class="formLabel">Address Line 2</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="ContactEmail" id="ContactEmail" class="floating-input" placeholder=" " tabindex="1" #email='ngModel'
+                [(ngModel)]="address.postCode" required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Post Code</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.postCode"> PostCode Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="AddressOne" id="AddressOne" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="address.city"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">City</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.city">City Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="AddressTwo" id="AddressTwo" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="address.state"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">State</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.city">State Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input name="country" type="text" class="floating-input" placeholder=" " id="country" tabindex="1" [(ngModel)]="countryObj"
+                ngui-auto-complete [source]="country" value-formatter="countryCodeISO2 - countryName" list-formatter="countryCodeISO2 - countryName"
+                [match-formatted]="true" required autocomplete="off" #countryC>
+              <label class="deleteIcon" for="country" class="formLabel">Country</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.city">Country Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="PostCode" id="PostCode" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="address.phoneNumber"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Phone Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.phoneNumber">Phone Number Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="City" id="City" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="address.faxNumber"
+                required autocomplete="off">
+              <label for="linkTitle" class="formLabel">Fax Number</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !address.faxNumber">Fax Number Required </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <button class="btn btn-light btn-add btn-lg width100">Add Address</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

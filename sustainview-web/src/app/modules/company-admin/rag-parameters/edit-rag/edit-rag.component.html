@@ -1,0 +1,153 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor" (click)="ragList()">RAG Parameters</a>
+            <a>></a>
+            <a>Edit RAG</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-5 offset-md-3 col-md-5 offset-sm-3 col-sm-6">
+      <form class="MT50 form-class" #f="ngForm" (ngSubmit)="f.form.valid && updateRag()">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="cocId" id="cocId" class="floating-input" placeholder=" " [(ngModel)]="cocObj" tabindex="1" ngui-auto-complete
+                [source]="cocArray" value-formatter="name" list-formatter="name" [match-formatted]="true" autocomplete="off">
+              <label for="cocId" class="formLabel">CoC Sub Section Reference</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !cocObj">COCId Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="not-audited" id="not-audited" class="floating-input" placeholder=" " [(ngModel)]="notAudited" tabindex="1"
+                ngui-auto-complete [source]="ragArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="not-audited" class="formLabel">Default RAG status when not audited yet</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !notAudited">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="outdated" id="outdated" class="floating-input" placeholder=" " [(ngModel)]="auditOutdated" tabindex="1"
+                ngui-auto-complete [source]="ragArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="outdated" class="formLabel">Default RAG status when audit is outdated </label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !auditOutdated">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="caparStatus" id="caparStatus" class="floating-input" placeholder=" " [(ngModel)]="caparStatus" tabindex="1"
+                ngui-auto-complete [source]="statusArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="caparStatus" class="formLabel">CAPARs from outdated audits to be considered for RAG status</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !caparStatus">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="issues" id="issues" class="floating-input" placeholder=" " [(ngModel)]="issueStatus" tabindex="1"
+                ngui-auto-complete [source]="statusArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="issues" class="formLabel">Should issues with status Resolved be treated as Closed</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !issueStatus">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="compliance" id="compliance" class="floating-input" placeholder=" " [(ngModel)]="ragNcs" tabindex="1"
+                ngui-auto-complete [source]="ragArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="compliance" class="formLabel">Default RAG status when there are Non Compliances (NC)</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !ragNcs">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='text' name="aoiDefault" id="aoiDefault" class="floating-input" placeholder=" " [(ngModel)]="ragAOI" tabindex="1"
+                ngui-auto-complete [source]="ragArray" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                autocomplete="off">
+              <label for="aoiDefault" class="formLabel">Default RAG status when there are areas of interest (AOI)</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !ragAOI">Status Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="nc" id="nc" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="rag.numberOfNcsAllowedAtDefaultRagStatus"
+                required autocomplete="off">
+              <label for="nc" class="formLabel">Max no of open Non Compliances (NC) allowed at default RAG status</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !rag.numberOfNcsAllowedAtDefaultRagStatus">Non Compliance Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="floating-label">
+              <input type='number' name="aoi" id="aoi" class="floating-input" placeholder=" " tabindex="1" [(ngModel)]="rag.numberOfAoiAllowedAtDefaultRagStatus"
+                required autocomplete="off">
+              <label for="aoi" class="formLabel">Max no. of open areas of interest (AOI) allowed at default status</label>
+            </div>
+            <div>
+              <span class="error" *ngIf="f.submitted && !rag.numberOfAoiAllowedAtDefaultRagStatus">AOI Required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 inline-block">
+              <button type="submit" class="btn btn-add btn-lg width100">Update Address</button>
+            </div>
+            <div class="col-md-6 col-sm-6 inline-block">
+              <span class="btn btn-delete btn-lg width100" (click)="deleteRag()" tabindex="5">Delete</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

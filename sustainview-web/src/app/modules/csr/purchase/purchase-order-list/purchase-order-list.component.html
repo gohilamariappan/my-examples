@@ -1,0 +1,95 @@
+<p-confirmDialog>
+</p-confirmDialog>
+<p-toast></p-toast>
+<header>
+  <nav class="navbar navbar-default subHeader">
+    <div class="container-fluid">
+      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left pull-left">
+          <li class="breadCrumbs">
+            <a class="cursor" (click)="utils.routeToContextUrls('dashboard')">
+              <i class="fa fa-home"></i>
+            </a>
+            <a>></a>
+            <a class="cursor">List Of Purchase Order</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container-fluid MT45">
+  <div class="custom-container">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2 class="MB30 inline-block">Purchase Order List
+      </h2>
+      <button type="button" pButton icon="fa fa-plus-circle" iconPos="left" label="Purchase Order Detail View" class="pull-right btn-add"
+        (click)="viewPurchaseOrder()"></button>
+      <p-table #dt [columns]="cols" [value]="purchaseOrders" [responsive]="true" [scrollable]="true" [style]="{width:'100%'}"
+        [paginator]="true" [rows]="10">
+        <ng-template pTemplate="caption">
+          <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" class="pull-left btn-add"></button>
+          <div class="global-filter-div">
+            <i class="fa fa-search fa-search-style"></i>
+            <input type="text" pInputText size="50" placeholder=" Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
+              class="global-filter-input">
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col *ngFor="let col of columns" style="width:200px">
+          </colgroup>
+        </ng-template>
+        <ng-template pTemplate="body" let-purchaseOrder let-columns="columns">
+          <tr class="table-tr-class">
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input type="text">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{purchaseOrder.purchaseOrderNumber}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td>{{purchaseOrder.purchaseOrderDate}}</td>
+            <td>{{purchaseOrder.leadPlantId}}</td>
+            <td>{{purchaseOrder.markForAudit}}</td>
+            <td>{{purchaseOrder.purchasingAgent}}</td>
+            <td>{{purchaseOrder.countryOfOriginCode}}</td>
+            <td>{{purchaseOrder.payToVendorName}}</td>
+            <td>{{purchaseOrder.factoryName}}</td>
+            <td>{{purchaseOrder.divisionName}}</td>
+            <td>{{purchaseOrder.ragStatus}}</td>
+            <td>{{purchaseOrder.lastAuditDate}}</td>
+            <td>{{purchaseOrder.auditDueDate}}</td>
+            <td>{{purchaseOrder.scheduleAuditDate}}</td>
+            <td>{{purchaseOrder.openNcs}}</td>
+            <td>{{purchaseOrder.outStandingNcs}}</td>
+            <td>{{purchaseOrder.sumPurchaseAmountLocalCurrency}}</td>
+            <td>{{purchaseOrder.sumPurchaseAmountCentralCurrency}}</td>
+            <td>{{purchaseOrder.sumOrderedUnits}}</td>
+            <td>{{purchaseOrder.countItemId}}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <tr>
+            <td colspan="15">Totals</td>
+            <td class="font-weight-bold">{{sumPoAmt}}</td>
+            <td class="font-weight-bold">{{sumPoAmtCntrl}}</td>
+            <td class="font-weight-bold">{{sumPoQunty}}</td>
+            <td class="font-weight-bold">{{sumItemId}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

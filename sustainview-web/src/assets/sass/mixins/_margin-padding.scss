@@ -1,0 +1,13 @@
+/* mixins for padding*/
+@mixin generalPadding($value){
+	padding: $value;
+}
+@mixin topMargin($value){
+	margin-top: $value;
+}
+@mixin bottomMargin($value){
+	margin-bottom: $value;
+}
+@mixin leftMargin($value){
+	margin-left: $value;
+}
