@@ -1,5 +1,5 @@
 #!groovy
-node ('master')
+node ('master'){
 try{
 
 stage('Checkout')
@@ -7,5 +7,11 @@ stage('Checkout')
 checkout scm
 
 }
+}
+catch (err) {
+    currentBuild.result = "FAILURE"
+    throw err
+    }
+
 }
 
