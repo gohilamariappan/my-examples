@@ -4,13 +4,8 @@ node('master') {
 
 try {
 	stage('creation') {
-		docker 
-		{
-		image 'nginx:latest'
+	sh 'docker pull nginx:latest'
 
-		}
-	
-	
 		}
 }
 
