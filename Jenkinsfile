@@ -7,5 +7,5 @@ stage('Checkout')
 checkout scm
 
 }
-
+}
 
