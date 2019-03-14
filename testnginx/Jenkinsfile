@@ -1,0 +1,16 @@
+#!groovy
+
+node('master') {
+
+try {
+	stage('creation') {
+		docker 
+		{
+		image 'nginx:latest'
+
+		}
+	
+	
+		}
+}
+}
