@@ -15,6 +15,13 @@ catch (err) {
     currentBuild.result = "FAILURE"
     throw err
     }
+            
+     stage ('post-build')
+{
+build job: 'test'
+}       
+            
+            
 
 }
 
