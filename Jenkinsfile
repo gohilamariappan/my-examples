@@ -16,5 +16,6 @@ stage ('post-build')
                   build job: test 
      
      }
+     sh'fi'
         }
 }
