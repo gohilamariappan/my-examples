@@ -16,12 +16,14 @@ catch (err) {
     throw err
     }
             
+finally
+{   
      stage ('post-build')
 {
 build job: 'test'
 }       
             
-            
+}           
 
 }
 
