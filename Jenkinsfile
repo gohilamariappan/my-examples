@@ -9,8 +9,8 @@ checkout scm
 }
 /*stage('Build') {
             sh  'mvn clean install'
-                      }
-}*/
+                      }*/
+}
 catch (err) {
     currentBuild.result = "FAILURE"
     throw err
