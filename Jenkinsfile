@@ -11,7 +11,7 @@ node('master')
 stage ('post-build')
     {
        properties([parameters([choice(choices: ['yes', 'no'], description: '', name: 'approval')])])     
-        if ( ${approval} == yes )
+       sh ' if [ ${approval} = yes ]'
      {
                   build job: test 
      
