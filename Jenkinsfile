@@ -1,27 +1,22 @@
+
 #!groovy
-node ('master'){
-try{
 
-stage('Checkout')
+node('master')
 {
-checkout scm
+ 
 
-}
-/*stage('Build') {
-            sh  'mvn clean install'
-                      }*/
-   stage ('post-build')
-{
-build job: 'test'
-}   
-            
-            
-}
-catch (err) {
-    currentBuild.result = "FAILURE"
-    throw err
-    }
-            
+stage('checkout')
 
+        {
+          checkout scm
+        }
+                           
+stage ('post-build')
+    {
+        properties([parameters([choice(choices: ['yes', 'no'], description: '', name: 'apporoval')])])     
+       sh  'if [ ${apporoval} = yes ]; then'
+         build job: test
+           sh'fi' 	
+         
+        }
 }
-
